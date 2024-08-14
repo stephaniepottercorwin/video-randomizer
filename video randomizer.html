@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!--THIS CODE WORKS UNTIL RELOAD--&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta content="width=device-width, initial-scale=1.0" name="viewport"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Random Video Playlist&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html, body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>video {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100vw;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>object-fit: cover;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: black;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- jQuery CDN --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Your custom script --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>$(document).ready(function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>var videos = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ type: 'video/mp4', src: 'https://freight.cargo.site/m/Q1918396806189591901251071833578/San-Joaquin-kit-fox.mp4' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ type: 'video/mp4', src: 'https://freight.cargo.site/m/E1918396806226485389398490936810/san-bruno-elfin-butterfly.mp4' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ type: 'video/mp4', src: 'https://freight.cargo.site/m/W1918396806244932133472200488426/Santa-Barbara-Song-Sparrow.mp4' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ type: 'video/mp4', src: 'https://freight.cargo.site/m/J1918396806263378877545910040042/thicktail-chub.mp4' }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>function getRandomVideo() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return videos[Math.floor(Math.random() * videos.length)];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>function setVideoSource(videoElement, src, type) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>var source = document.createElement('source');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>source.src = src;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>source.type = type;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>videoElement.empty(); // Clear existing sources</p>
+<p class="p1"><span class="Apple-converted-space">                </span>videoElement.append(source);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>function playRandomVideo() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>var video = $('#myVideo')[0]; // Get the video DOM element</p>
+<p class="p1"><span class="Apple-converted-space">                </span>var randomVideo = getRandomVideo();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setVideoSource($(video), randomVideo.src, randomVideo.type);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>video.play().catch(function(error) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>console.log('Playback failed:', error);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Initial video load</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playRandomVideo();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Event listener to load a new video when the current one ends</p>
+<p class="p1"><span class="Apple-converted-space">            </span>$('#myVideo').on('ended', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>playRandomVideo();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;video autoplay="" id="myVideo" muted="" playsinline=""&gt;&lt;source src="https://freight.cargo.site/m/J1918396806263378877545910040042/thicktail-chub.mp4" type="video/mp4"&gt;&lt;/video&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+</body>
+</html>
